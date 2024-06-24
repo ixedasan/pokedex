@@ -7,7 +7,7 @@ import { PokemonList } from './PokemonList'
 const INITIAL_LIMIT = 40
 const INCREASE_LIMIT = 20
 
-export const Pokemons = () => {
+export const Main = () => {
 	const [pokemons, setPokemons] = useState([])
 	const [search, setSearch] = useState('')
 	const [limit, setLimit] = useState(INITIAL_LIMIT)
@@ -55,7 +55,10 @@ export const Pokemons = () => {
 						onChange={handleChangeSearch}
 					/>
 
-					<button className='p-2 bg-lime-500 md:hover:bg-lime-600 transition-colors rounded-xl shadow-lime-500/50 shadow-md lg:hidden '>
+					<button
+						type='button'
+						className='p-2 bg-lime-500 md:hover:bg-lime-600 transition-colors rounded-xl shadow-lime-500/50 shadow-md lg:hidden '
+					>
 						<IoIosSearch color='white' size={24} />
 					</button>
 				</div>
