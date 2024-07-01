@@ -28,7 +28,7 @@ export const PokemonDetail = ({ pokemon }) => {
 				<div>
 					<h4 className='font-bold'>Description</h4>
 					<p className='text-gray-400 normal-case'>
-						{pokemon?.description || 'No description available'}
+						{pokemon?.description}
 					</p>
 				</div>
 				<div className='grid grid-cols-2 gap-4'>

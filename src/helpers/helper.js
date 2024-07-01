@@ -28,7 +28,16 @@ const formatTypes = types => types.map(type => type.type.name)
 const formatAbilities = abilities =>
 	abilities.map(ability => ability.ability.name)
 
-const getDescriptions = data => data.flavor_text_entries[1].flavor_text
+const getDescriptions = data => {
+	const englishEntry = data.flavor_text_entries.find(
+		entry => entry.language.name === 'en'
+	)
+	if (!englishEntry) {
+		return 'No description available'
+	}
+	// eslint-disable-next-line no-control-regex
+	return englishEntry.flavor_text.replace(/[\x00-\x1F\x7F-\x9F]/g, ' ')
+}
 
 const getEvotions = async evolution => {
 	const evolutions = []
