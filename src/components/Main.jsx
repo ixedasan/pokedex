@@ -21,7 +21,7 @@ export const Main = () => {
 		[pokemons, search]
 	)
 
-	const handleChangeSearch = e => setSearch(e.target.value.toLowerCase())
+	const handleChangeSearch = e => setSearch(e.target.value.toLowerCase().trim())
 
 	useEffect(() => {
 		axios

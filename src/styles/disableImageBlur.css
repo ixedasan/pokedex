@@ -1,0 +1,6 @@
+@layer components {
+	.disable_blur {
+		image-rendering: -webkit-optimize-contrast;
+		image-rendering: pixelated;
+	}
+}

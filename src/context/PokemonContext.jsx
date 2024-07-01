@@ -14,8 +14,10 @@ const PokemonContext = createContext()
 const PokemonProvider = ({ children }) => {
 	const [detail, setDetail] = useState(null)
 	const [showDetail, setShowDetail] = useState(false)
+	const [isLoading, setIsLoading] = useState(false)
 
 	const showPokemon = async info => {
+		setIsLoading(true)
 		const { data: dataSpecies } = await axios.get(info.species.url)
 		const { data: dataEvolution } = await axios.get(
 			dataSpecies.evolution_chain.url
@@ -37,6 +39,9 @@ const PokemonProvider = ({ children }) => {
 			image: getPokemonImage(info.sprites),
 		})
 		setShowDetail(true)
+		setTimeout(() => {
+			setIsLoading(false)
+		}, 500)
 	}
 
 	const closeDetail = () => {
@@ -48,8 +53,9 @@ const PokemonProvider = ({ children }) => {
 			value={{
 				detail,
 				showDetail,
-				showPokemon,
 				closeDetail,
+				showPokemon,
+				isLoading,
 			}}
 		>
 			{children}

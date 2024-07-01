@@ -1,11 +1,13 @@
 import { IoMdClose } from 'react-icons/io'
+import { colorType } from '../constants/colors'
+import { PokemonDetail } from "./PokemonDetail"
 
-export const Modal = ({ showModal, closeModal }) => {
+export const Modal = ({ showModal, closeModal, pokemon }) => {
 	return (
 		<div
-			className={`fixed top-0 left-0 right-0 h-screen bg-lime-400 transition-all duration-500 ${
+			className={`fixed lg:hidden top-0 left-0 right-0 h-screen transition-all duration-500 ${
 				showModal ? 'visible opacity-100' : 'invisible opacity-0'
-			}`}
+			} ${colorType[pokemon?.types[0]]}`}
 		>
 			<button
 				onClick={closeModal}
@@ -18,7 +20,7 @@ export const Modal = ({ showModal, closeModal }) => {
 					showModal ? 'bottom-0' : '-bottom-full'
 				}`}
 			>
-				pokemon
+				<PokemonDetail pokemon={pokemon} />
 			</div>
 		</div>
 	)
