@@ -1,24 +1,29 @@
 import usePokemonContext from '../hooks/usePokemonContext'
 
-export const Evolutions = ({ evolutions }) => {
+export const Variations = ({ variations }) => {
 	const { showPokemon } = usePokemonContext()
+
+	if (variations.length === 0) {
+		return (
+			<p className='text-gray-400 normal-case mb-4'>
+				Pokemon has no variations
+			</p>
+		)
+	}
 
 	return (
 		<div className='flex justify-center items-center flex-wrap'>
-			{evolutions.map((evolution, index) => (
+			{variations.map((variation, index) => (
 				<div key={index}>
 					<button
 						className='rounded-2xl hover:bg-gray-100 transition-colors'
-						onClick={() => showPokemon(evolution.info)}
+						onClick={() => showPokemon(variation.info)}
 					>
 						<div className='flex gap-2 items-center'>
+							<img src={variation.image} alt='' />
 							<div className='bg-gray-100 font-bold text-sm p-2 rounded-2xl'>
-								<p className='capitalize'>
-									{evolution.name}{' '}
-									<span className='italic'>Lv.{evolution.min_level}</span>
-								</p>
+								<p className='capitalize'>{variation.name}</p>
 							</div>
-							<img src={evolution.image} alt='' />
 						</div>
 					</button>
 				</div>

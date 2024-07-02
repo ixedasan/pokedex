@@ -1,6 +1,7 @@
 import { colorStat, colorType } from '../constants/colors'
 import { getAbilitiesGridCols } from '../helpers/pokemonAbilitiesGridCols'
 import { Evolutions } from './Evolutions'
+import { Variations } from "./Variations"
 
 export const PokemonDetail = ({ pokemon }) => {
 	return (
@@ -8,7 +9,7 @@ export const PokemonDetail = ({ pokemon }) => {
 			<div className='absolute left-1/2 -translate-x-1/2 -translate-y-[92%] scale-[180%] '>
 				<img
 					src={pokemon?.image}
-					alt={pokemon?.name}
+					alt=''
 					className='disable_blur'
 				/>
 			</div>
@@ -27,9 +28,7 @@ export const PokemonDetail = ({ pokemon }) => {
 				</ul>
 				<div>
 					<h4 className='font-bold'>Description</h4>
-					<p className='text-gray-400 normal-case'>
-						{pokemon?.description}
-					</p>
+					<p className='text-gray-400 normal-case'>{pokemon?.description}</p>
 				</div>
 				<div className='grid grid-cols-2 gap-4'>
 					<div className='grid gap-2'>
@@ -82,6 +81,10 @@ export const PokemonDetail = ({ pokemon }) => {
 				<div className='grid gap-2'>
 					<h4 className='font-bold'>Evolution</h4>
 					<Evolutions evolutions={pokemon?.evolutions ?? []} />
+				</div>
+				<div className="grid gap-2">
+					<h4 className="font-bold">Variations</h4>
+					<Variations variations={pokemon?.variations ?? []} />
 				</div>
 			</div>
 		</>

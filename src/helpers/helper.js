@@ -1,4 +1,4 @@
-import { getEvolutionsData } from './services'
+import axios from 'axios'
 
 const formatStats = stats => {
 	const nameTypes = {
@@ -54,7 +54,10 @@ const getEvotions = async evolution => {
 		chain = chain['evolves_to'][0]
 	} while (chain)
 
-	const promises = getEvolutionsData(evolutions)
+	const promises = evolutions.map(
+		async evolution =>
+			await axios.get(`https://pokeapi.co/api/v2/pokemon/${evolution.name}/`)
+	)
 
 	try {
 		const response = await Promise.allSettled(promises)
@@ -79,6 +82,20 @@ const getPokemonImage = sprites =>
 	sprites.versions?.['generation-v']?.['black-white']?.animated
 		?.front_default || sprites.front_default
 
+const getVariations = async species => {
+	const variations = await Promise.all(
+		species.varieties.slice(1).map(async variety => {
+			const { data } = await axios.get(variety.pokemon.url)
+			return {
+				name: variety.pokemon.name,
+				image: data.sprites.front_default,
+				info: data,
+			}
+		})
+	)
+	return variations
+}
+
 export {
 	evolutionsInfo,
 	formatAbilities,
@@ -87,4 +104,5 @@ export {
 	getDescriptions,
 	getEvotions,
 	getPokemonImage,
+	getVariations,
 }

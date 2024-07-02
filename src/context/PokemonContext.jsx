@@ -7,6 +7,7 @@ import {
 	getDescriptions,
 	getEvotions,
 	getPokemonImage,
+	getVariations,
 } from '../helpers/helper'
 
 const PokemonContext = createContext()
@@ -25,6 +26,7 @@ const PokemonProvider = ({ children }) => {
 
 		const { id, name, height, weight, stats, types, abilities } = info
 		const evolutions = await getEvotions(dataEvolution)
+		const variations = await getVariations(dataSpecies)
 
 		setDetail({
 			id,
@@ -37,6 +39,7 @@ const PokemonProvider = ({ children }) => {
 			description: getDescriptions(dataSpecies),
 			evolutions,
 			image: getPokemonImage(info.sprites),
+			variations,
 		})
 		setShowDetail(true)
 		setTimeout(() => {
