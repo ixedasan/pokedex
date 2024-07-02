@@ -8,7 +8,6 @@ You can view a live demo of the project [here](https://ixedasan.github.io/pokede
 ### Mobile
 
 ![preview](./src/assets/github-preview/2.png)
-
 ![preview](./src/assets/github-preview/3.png)
 
 ### Desktop
