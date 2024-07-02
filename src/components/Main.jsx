@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { IoIosSearch } from 'react-icons/io'
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 import { PokemonList } from './PokemonList'
 
@@ -59,7 +58,7 @@ export const Main = () => {
 						type='button'
 						className='p-2 bg-lime-500 md:hover:bg-lime-600 transition-colors rounded-xl shadow-lime-500/50 shadow-md lg:hidden '
 					>
-						<IoIosSearch color='white' size={24} />
+						<img src="/images/search.svg" alt="" />
 					</button>
 				</div>
 			</form>
