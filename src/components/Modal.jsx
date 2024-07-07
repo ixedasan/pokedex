@@ -12,7 +12,7 @@ export const Modal = ({ showModal, closeModal, pokemon }) => {
 				onClick={closeModal}
 				className='absolute top-5 right-4 bg-white p-1 rounded-lg hover:opacity-80 transition-opacity'
 			>
-				<img src="/images/close.svg" alt="" />
+				<img src="./images/close.svg" alt="" />
 			</button>
 			<div
 				className={`absolute w-full h-[85%] bg-white rounded-t-3xl text-center transition-all duration-500 ${

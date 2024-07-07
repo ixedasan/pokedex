@@ -58,7 +58,7 @@ export const Main = () => {
 						type='button'
 						className='p-2 bg-lime-500 md:hover:bg-lime-600 transition-colors rounded-xl shadow-lime-500/50 shadow-md lg:hidden '
 					>
-						<img src="/images/search.svg" alt="" />
+						<img src="./images/search.svg" alt="" />
 					</button>
 				</div>
 			</form>
